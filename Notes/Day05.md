@@ -21,3 +21,4 @@ pip 会跑到一个叫 PyPI（Python Package Index）的超级大菜市场里，
     4.1 手写
     4.2 自动生成：你已经在虚拟环境里装好了一堆包（用 pip install 买好了菜），想把这堆包的名字全记下来，就用：pip freeze >requirement.txt
 想要直接配置上面的环境：pip install -r requirement.txt
+
