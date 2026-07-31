@@ -1,4 +1,4 @@
-1. python -m venv:以脚本的方式运行Python内置的venv（虚拟环境）模块
+1. python -m venv name:以脚本的方式运行Python内置的venv（虚拟环境）模块
 最后的 venv：你给虚拟环境文件夹起的名字（可以换成别的，比如 myenv）
 执行后，当前目录会多出一个 venv 文件夹，里面包含一个独立的 Python 解释器和独立的 pip 包管理工具，与系统全局的 Python 完全隔离。
 
