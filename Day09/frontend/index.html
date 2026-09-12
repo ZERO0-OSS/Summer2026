@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">/*meta:HTML 里用来给页面添加额外信息的标签,给浏览器，爬虫看的。*/
+    <title>AI Blog Generator</title>/*标签页的标题*/
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    /*link:用来引入外部资源,链接为CSS框架,Tailwind */
+    <style>/*表示在HTML内部直接些CSS*/
+        /* 旋转加载动画 */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }/*transform用于元素的元素进行变换(位移、缩放、旋转、倾斜等)*/
+        }
+        /*为了兼容性*/
+        @-webkit-keyframes rotate {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        .load {
+            width: 100px;
+            height: 100px;
+            margin: 110px auto 0;
+            border: solid 10px #751d93;
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            -webkit-transition: all 0.5s ease-in;
+            -webkit-animation-name: rotate;
+            -webkit-animation-duration: 1.0s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen bg-gray-100 font-sans antialiased">
+    <!-- Navbar 导航栏 -->
+    <nav class="bg-blue-600 p-4 text-white flex justify-between">
+        <div>
+            <h1 class="text-3xl font-bold">AI Blog Generator</h1>
+        </div>
+        <div>
+            <a href="#" class="text-white hover:underline">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main 主体区域 -->
+    <div class="flex-grow container mx-auto mt-10 px-4 sm:px-6">
+        <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+
+            <!-- 介绍区域 -->
+            <div class="text-center">
+                <h2 class="text-2xl font-semibold mb-4">Welcome to the AI Blog Generator</h2>
+                <p class="text-gray-700">
+                    Generate high-quality blog articles from YouTube videos.<br>
+                    Simply enter the link to the YouTube video below and generate.
+                </p>
+            </div>
+
+            <br>
+
+            <!-- Youtube链接输入区域 -->
+            <div>
+                <h2 class="text-xl mb-4 font-semibold">Enter YouTube URL</h2>
+                <div class="flex space-x-4">
+                    <input id="youtubeLink" type="url" placeholder="Paste YouTube video link" class="flex-grow border px-3 py-2 rounded">
+                    <button id="generateBlogButton" class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition">Generate</button>
+                </div>
+            </div>
+
+            <!-- 生成博客内容展示区域 -->
+            <section class="mt-10 flex-grow">
+                <h2 class="text-xl mb-4 font-semibold">Generated Blog Article</h2>
+                <!-- loading 旋转加载框（默认隐藏） -->
+                <div id="loader" class="load hidden"></div>
+                <!-- AI生成文章容器 -->
+                <div id="blogContent" class="mt-2 text-gray-700 space-y-4">
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // 简易前端交互逻辑（页面基础功能）
+        const generateBtn = document.getElementById('generateBlogButton');
+        const youtubeInput = document.getElementById('youtubeLink');
+        const blogContent = document.getElementById('blogContent');
+        const loader = document.getElementById('loader');
+
+        generateBtn.addEventListener('click', ()=>{
+            const url = youtubeInput.value.trim();
+            if(!url){
+                alert("Please input YouTube link!");
+                return;
+            }
+            // 显示加载动画
+            loader.classList.remove('hidden');
+            blogContent.innerHTML = "";
+
+            // 模拟AI请求延时（后端对接时删掉这段，替换接口请求）
+            setTimeout(()=>{
+                loader.classList.add('hidden');
+                blogContent.innerHTML = `
+                    <p>Your generated blog content will display here after AI processing...</p>
+                    <p>You can later connect this frontend to Python backend to realize YouTube transcript + AI writing.</p>
+                `
+            },2500)
+        })
+    </script>
+</body>
+</html>

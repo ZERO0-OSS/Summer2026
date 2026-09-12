@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanBlog - 网页文章转干净博客</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 自定义加载动画 */
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3b82f6;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- 导航栏 -->
+  <nav class="bg-blue-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- 左侧产品名字 -->
+      <div class="text-xl font-bold text-blue-800">
+        CleanBlog
+      </div>
+      
+      <!-- 右侧用户头像 + 名字 -->
+      <div class="flex items-center space-x-3">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=User" 
+             alt="用户头像" 
+             class="w-8 h-8 rounded-full border border-blue-300">
+        <span class="text-gray-700 font-medium">用户</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主页面 -->
+  <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-8">
+    
+    <!-- 产品介绍 -->
+    <section class="text-center mb-10">
+      <h1 class="text-3xl font-bold text-gray-800 mb-3">网页文章一键转干净博客</h1>
+      <p class="text-gray-600 text-lg">
+        输入任意文章链接，自动去除广告、导航和无关内容，生成干净可读的博客正文。
+      </p>
+    </section>
+
+    <!-- URL 输入区域 -->
+    <section class="mb-8">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input 
+          id="urlInput"
+          type="url" 
+          placeholder="请输入文章链接，例如：https://example.com/article"
+          class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        >
+        <button 
+          id="generateBtn"
+          onclick="startGenerate()"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-lg transition duration-200 whitespace-nowrap"
+        >
+          生成博客
+        </button>
+      </div>
+    </section>
+
+    <!-- 生成结果容器 -->
+    <section id="resultContainer" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 min-h-[400px]">
+      <div id="placeholder" class="text-center text-gray-400 py-20">
+        <p class="text-lg">生成的博客内容将显示在这里</p>
+      </div>
+      
+      <!-- 实际结果区域（默认隐藏） -->
+      <div id="resultContent" class="hidden">
+        <h2 id="articleTitle" class="text-2xl font-bold text-gray-800 mb-4"></h2>
+        <div id="articleBody" class="prose max-w-none text-gray-700 leading-relaxed whitespace-pre-wrap"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 尾栏 -->
+  <footer class="bg-blue-100 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 py-4 text-center text-gray-600 text-sm">
+      © 2026 CleanBlog · 让阅读更干净
+    </div>
+  </footer>
+
+  <!-- 加载过渡遮罩 -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl p-8 flex flex-col items-center shadow-lg">
+      <div class="loader mb-4"></div>
+      <p class="text-gray-700 font-medium">正在提取文章内容，请稍候...</p>
+    </div>
+  </div>
+
+  <script>
+    function startGenerate() {
+      const url = document.getElementById('urlInput').value.trim();
+      
+      if (!url) {
+        alert('请输入文章链接');
+        return;
+      }
+
+      // 显示加载过渡页
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      
+      // 模拟生成过程（实际项目中这里会调用后端接口）
+      setTimeout(() => {
+        // 隐藏加载
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        
+        // 显示结果（这里用模拟数据，后面接后端时替换）
+        document.getElementById('placeholder').classList.add('hidden');
+        document.getElementById('resultContent').classList.remove('hidden');
+        
+        document.getElementById('articleTitle').textContent = '这是提取到的文章标题';
+        document.getElementById('articleBody').textContent = '这里是提取并清洗后的干净正文内容...\n\n实际使用时，这里会显示从网页中提取出的真实文章内容。';
+      }, 2000); // 模拟2秒加载时间
+    }
+  </script>
+</body>
+</html>

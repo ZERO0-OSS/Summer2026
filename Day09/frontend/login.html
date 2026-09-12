@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Generator - Login</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100 font-sans antialiased">
+    <!-- 导航栏 -->
+    <nav class="bg-blue-600 p-4 text-white flex justify-between items-center">
+        <div>
+            <h1 class="text-3xl font-bold">AI Blog Generator</h1>
+        </div>
+        <div>
+            <a href="#" class="text-white hover:underline">Logout</a>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="flex-grow container mx-auto mt-10 px-4 sm:px-6">
+        <!-- 登录卡片 -->
+        <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
+            
+            <!-- username 字段 -->
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-medium mb-2">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    placeholder="Please input your username" 
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
+            </div>
+
+            <!-- password 字段 -->
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Please input your password" 
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
+            </div>
+
+            <!-- 登录按钮（根据上下文补充） -->
+            <button class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                Login
+            </button>
+        </div>
+    </div>
+</body>
+</html>
